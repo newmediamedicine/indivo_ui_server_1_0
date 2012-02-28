@@ -1,0 +1,26 @@
+{% load i18n %}
+<% if (accounts.length > 0) {
+$(accounts).each(function(i, a) { %>
+	<div class="account" <%= a %>>
+		<div class="account_name"><%= a.fullName ? a.fullName : a.id %></div>
+		<div class="account_id"><%= a.id %></div>
+		<div class="error_area" <%== (a.in_no_carenet) ? '' : 'style="display: none;"' %>>{% trans "You must add this account to at least one carenet in order to to keep it in your accounts list" %}</div>
+	</div>
+<% });
+} %>
+<div class="account new" <%= null %>>
+	<div class="account_name">
+		<img src="/jmvc/ui/resources/images/add_20.png" alt="" />
+		{% trans "Add account" %}
+	</div>
+	<form id="new_account_form" action="javascript:void(0);" method="get" style="display: none;">
+		<div class="account_id">{% trans "Account ID:" %}</div>
+		<input type="text" class="account_name" placeholder="" name="new_account_id" value="" />
+		<div class="account_buttons">
+			<button type="reset" class="small">{% trans "Cancel" %}</button>
+			<button type="submit">{% trans "Add" %}</button>
+		</div>
+		<div class="error_area" style="display: none;"></div>
+	</form>
+</div>
+<div style="clear: left;"> </div>

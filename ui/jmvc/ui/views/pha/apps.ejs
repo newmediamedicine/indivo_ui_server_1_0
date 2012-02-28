@@ -1,0 +1,16 @@
+<% _(all_apps).each(function(app, i) {
+	var input_id = "app_" + app.id.replace(/-/g, '_'); %>
+	<div class="app <%= app.enabled ? '' : 'disabled' %> <%= app.autonomous ? 'autonomous' : '' %>" style="background-image: url('<%=  app.getImageSource() %>');" <%= app %>>
+		<b class="app_name"><%= app.name %></b>
+		<div class="app_info">
+			<b><%= app.name %></b><br />
+			<%= app.description %><br />
+			<span><%= app.app_id %></span>
+		</div>
+		<div class="app_options">
+			<input type="checkbox" id="<%= input_id %>" name="enable_app" value="1" <%= app.enabled ? 'checked="checked"' : '' %> <%= app %> />
+			<label for="<%= input_id %>">Enable</label>
+		</div>
+	</div>
+<% }) %>
+<div style="clear: left;"> </div>

@@ -1,0 +1,28 @@
+{% load i18n %}
+<% $(carenets).each(function(i, carenet) { %>
+<div class="carenet square" <%= carenet %>>
+	<div class="carenet_remove"></div>
+	<div class="carenet_border">
+		<div class="carenet_content">
+		<% if (carenet.accounts && carenet.accounts.length > 0) { %>
+			<div class="carenet_content_scroller">
+			<% _(carenet.accounts).each(function(acc, i) { %>
+				<%== controller.view('carenet_account', {'account': acc}) %>
+			<% }); %>
+			</div>
+		<% } else { %>
+			<div class="carenet_content_scroller"></div>
+			<p class="hint">{% trans "No accounts" %}</p>
+		<% } %>
+		</div>
+	</div>
+	<div class="carenet_inner">
+		<p>
+			<a class="carenet_name"><%= carenet.name %></a>
+			<b class="carenet_num_items"><%= carenet.accounts ? carenet.accounts.length : 0 %></b>
+		</p>
+	</div>
+</div>
+<% }); %>
+
+<div style="clear: left;"> </div>

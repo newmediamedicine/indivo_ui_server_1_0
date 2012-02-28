@@ -1,0 +1,31 @@
+{% load i18n %}
+
+<h2>{% trans "Sharing for" %} <%= label %></h2>
+
+<p>{% blocktrans %}
+Your Indivo record contains care networks. A care network is a
+place for you to share some of your health information with a
+subset of individuals you select. For example, the "Family" care
+network is where you might invite your loved ones to view most of
+your health information, while the "Work" care network will include
+only people you work with and a much smaller subset of your health
+information.
+{% endblocktrans %}</p>
+
+
+<!-- Accounts List -->
+<h3>{% trans "Known accounts" %}</h3>
+<div id="known_accounts">
+	<h4><img class="loader" src="jmvc/ui/resources/images/spinner-small.gif" />{% trans "Loading accounts" %}</h4>
+</div>
+
+
+<p id="carenet_drag_accounts" class="drag_instructions" style="display: none;">
+	<img src="jmvc/ui/resources/images/arrow-down.png" alt="" />
+	{% trans "Drag accounts to carenets to start sharing with them" %}
+</p>
+
+<!-- Carenets -->
+<div id="carenets" style="display: none;">
+	<h4><img class="loader" src="jmvc/ui/resources/images/spinner-small.gif" />{% trans "Loading carenets" %}</h4>
+</div>

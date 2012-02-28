@@ -1,0 +1,47 @@
+{% extends "ui/base.html" %}
+{% load i18n %}
+
+{% block title_suffix %}{% trans "Setup" %}{% endblock %}
+
+{% block readyscript %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#conf1').bind('keyup', function(ev) {
+				if ($(this).val().length >= 3) {
+					if (ev && ev.keyCode && (ev.keyCode > 47 && ev.keyCode < 58) || (ev.keyCode > 95 && ev.keyCode < 106)) {
+						$('#conf2').select();
+					}
+				}
+			}).select();
+		});
+	</script>
+{% endblock %}
+
+{% block hint %}
+	{% if not ERROR and not MESSAGE %}
+		<div class="login_message">{% trans "Enter the confirmation code to activate your account" %}<br /><b>{{ ACCOUNT_ID }}</b></div>
+	{% endif %}
+{% endblock %}
+
+{% block main %}
+	<!-- Confirmation Code Form -->
+	<form id="init_form" class="table_form" method="post" action="/accounts/{{ ACCOUNT_ID }}/init/{{ PRIMARY_SECRET }}">
+		<div class="row">
+			<div class="cell">
+				{% trans "Confirmation code:" %}
+			</div>
+			<div class="cell">
+				<input type="text" style="width: 50px;" id="conf1" name="conf1" size="3" maxlength="3" tabindex="1" />
+				&mdash;
+				<input type="text" style="width: 50px;" id="conf2" name="conf2" size="3" maxlength="3" tabindex="2" />
+				
+				<div class="main_action_button">
+					<button id="submit" type="submit" name="re_send" value="1" tabindex="3">{% trans "Confirm Account" %}</button>
+					<p class="moreinfo">
+						<a href="/accounts/{{ ACCOUNT_ID }}/send_secret">{% trans "Lost your confirmation code?" %}</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</form>
+{% endblock %}

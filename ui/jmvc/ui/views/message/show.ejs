@@ -1,0 +1,41 @@
+{% load i18n %}
+<h2>{% trans "Inbox" %}</h2>
+
+<% if (messages.length == 0) { %>
+
+  <em>{% trans "no messages" %}</em>
+
+<% } else { %>
+
+<table class="light messages">
+  <thead>
+    <tr>
+      <th class="from">{% trans "From" %}</th>
+      <th class="about">{% trans "About" %}</th>
+      <th>{% trans "Subject" %}</th>
+      <th class="date">{% trans "Date" %}</th>
+      <th class="attachment"</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for (var i=0; i<messages.length; i++) { %>
+      <tr <%= messages[i] %> class="<%=(i%2)===0?'odd':'even'%>
+                 <%= (!messages[i].read_at) ? 'unread' : '' %>
+        ">
+        <td><div class="marker"> </div><%= messages[i].sender %></td>
+        <td><%= account.get_record_label(messages[i].record_id) %></td>
+        <td>
+        	<%= messages[i].subject %>
+        </td>
+        <td><%= UI.UTILS.dateTimeToPrettyString(messages[i].received_at) %></td>
+        <td>
+        	<% if (messages[i].attachments && messages[i].attachments.length > 0) { %>
+        		<img class="icon paperclip" src="/jmvc/ui/resources/images/paperclip.png" alt="attachment" title="attachment">
+        	<% } %>
+        </td>
+      </tr>
+      <% } %>
+   </tbody>
+</table>
+
+<% } %>
