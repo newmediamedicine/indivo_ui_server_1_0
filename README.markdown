@@ -1,3 +1,12 @@
+Important note about cloning
+=====================================================================
+
+For the Python import paths to work, you must do the following: 
+
+When cloning this repo, clone into indivo_ui_server.
+
+* git clone git@github.com:fyoung/indivo_ui_server_1_0.git indivo_ui_server
+
 
 Indivo UI Server
 ================
