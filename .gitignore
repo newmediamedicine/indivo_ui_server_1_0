@@ -1,7 +1,6 @@
 *~
 *.pyc
 log/
-settings.py
 *.log
 ui/jmvc/ui/docs*
 *#
