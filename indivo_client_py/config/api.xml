@@ -37,6 +37,11 @@
     <response />
   </method>
   <method>
+    <!-- Added by FBY on 03-23-2012 -->
+    <call name='account_sent_message' method='get' url='/accounts/{ACCOUNT_ID}/sent/{MESSAGE_ID}' />
+    <response />
+  </method>
+  <method>
     <!-- Added by FBY on 02-29-2012 -->
     <call name='account_sent_message_archive' method='post' url='/accounts/{ACCOUNT_ID}/sent/{MESSAGE_ID}/archive' />
     <response />

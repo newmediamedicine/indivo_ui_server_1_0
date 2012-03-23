@@ -114,6 +114,16 @@ class API:
 					account_id=account_id, debug=debug)
 
 
+	def account_sent_message(self, app_info, account_id='', message_id='', data=None, debug=False): 
+		return self.utils_obj.get_response('account_sent_message', 
+					'get', 
+					'/accounts/{ACCOUNT_ID}/sent/{MESSAGE_ID}', 
+					[], 
+					app_info, 
+					data, 
+					account_id=account_id, message_id=message_id, debug=debug)
+
+
 	def account_sent_message_archive(self, app_info, account_id='', message_id='', data=None, debug=False): 
 		return self.utils_obj.get_response('account_sent_message_archive', 
 					'post', 
