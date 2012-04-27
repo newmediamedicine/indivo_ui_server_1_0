@@ -1,0 +1,36 @@
+*   Grab v1.0.0 tag of indivo_ui_server 1.0 and extract to /tmp/PatchWork
+
+    https://github.com/chb/indivo_ui_server/zipball/v1.0.0
+
+*   Copy /indivo/indivo_server to /tmp/PatchWork
+
+*   Clean /tmp/PatchWork/indivo_server source tree
+
+    find . -name "*.pyc" -exec rm '{}' ';'
+
+*   Remove .git and .gitignore from both source trees if they exist
+
+    find . -name "*.git*" -exec rm -rf '{}' ';'
+
+*   from /tmp/PatchWork generate patch
+
+    diff --exclude=files -Naur chb-indivo_ui_server-12cb4ac indivo_ui_server > indivo_ui_server_patch.diff
+
+-= What follows is relevent to Joslin Diabetes Clinic =-
+
+*   Grab the CHB version of indivo_server v1.0.0 but don't make any code changes
+
+    cd /desired/install/directory
+    git clone git://github.com/chb/indivo_ui_server.git
+    cd indivo_ui_server
+    git submodule init
+    git submodule update
+    git checkout v1.0.0
+
+*   Copy indivo_ui_server_patch.diff to the CHB version of the indivo_ui_server folder
+
+*   Apply patch
+
+    patch -p1 -i indivo_ui_server_patch.diff
+
+*   Create|Edit settings.py as needed
