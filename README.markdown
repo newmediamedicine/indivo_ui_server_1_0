@@ -1,4 +1,4 @@
-Important note about cloning
+Important note about cloning this repository
 =====================================================================
 
 For the Python import paths to work, you must do the following: 
@@ -6,6 +6,14 @@ For the Python import paths to work, you must do the following:
 When cloning this repo, clone into indivo_ui_server.
 
 * git clone https://github.com/fyoung/indivo_ui_server_1_0.git indivo_ui_server
+
+Please note when following the instructions for installing that for
+this repository you should ignore the steps involving submodules
+namely "git submodule init" and "git submodule update" because they
+are not supported.
+
+Also there is no need to "checkout" a specific tag. What you retrieve
+from this repository is the latest stable version.
 
 
 Indivo UI Server
