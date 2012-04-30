@@ -2,7 +2,7 @@
 
     https://github.com/chb/indivo_ui_server/zipball/v1.0.0
 
-*   Copy /indivo/indivo_server to /tmp/PatchWork
+*   Copy folder ~/indivo/indivo_ui_server to /tmp/PatchWork
 
 *   Clean /tmp/PatchWork/indivo_server source tree
 
@@ -18,7 +18,7 @@
 
 -= What follows is relevent to Joslin Diabetes Clinic =-
 
-*   Grab the CHB version of indivo_server v1.0.0 but don't make any code changes
+*   Grab the CHB version of indivo_ui_server v1.0.0 but don't make any code changes
 
     cd /desired/install/directory
     git clone git://github.com/chb/indivo_ui_server.git
